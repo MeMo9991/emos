@@ -6,6 +6,7 @@ import lombok.Data;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
+//封装前端数据
 @Data
 @Schema(description = "登陆表单类")
 public class LoginForm {

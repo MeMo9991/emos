@@ -28,7 +28,7 @@ public class TrtcUtil {
     @Value("${tencent.trtc.secretKey}")
     private String secretKey;
 
-
+    //生成视频会议的用户签名
     public String genUserSig(String userId) {
         return GenTLSSignature(appId, userId, expire, null, secretKey);
     }

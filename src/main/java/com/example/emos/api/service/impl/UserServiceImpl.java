@@ -115,28 +115,33 @@ public class UserServiceImpl implements UserService {
         return userId;
     }
 
+    //修改密码
     @Override
     public int updatePassword(HashMap param) {
         int rows = userDao.updatePassword(param);
         return rows;
     }
 
+    //查询用户分页数据
     @Override
     public PageUtils searchUserByPage(HashMap param) {
         ArrayList<HashMap> list=userDao.searchUserByPage(param);
         long count=userDao.searchUserCount(param);
         int start=(Integer) param.get("start");
         int length=(Integer) param.get("length");
+        //查询出的数据封装到pageutils
         PageUtils pageUtils=new PageUtils(list,count,start,length);
         return pageUtils;
     }
 
+    //添加用户
     @Override
     public int insert(TbUser user) {
         int rows=userDao.insert(user);
         return rows;
     }
 
+    //更新用户信息
     @Override
     public int update(HashMap param) {
         int rows= userDao.update(param);

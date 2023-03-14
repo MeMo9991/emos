@@ -5,6 +5,7 @@ import lombok.Data;
 
 import javax.validation.constraints.*;
 
+//添加用户前端传来的数据
 @Schema(description = "添加用户表单")
 @Data
 public class InsertUserForm {

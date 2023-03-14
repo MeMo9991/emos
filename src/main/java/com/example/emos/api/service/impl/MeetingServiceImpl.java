@@ -120,6 +120,7 @@ public class MeetingServiceImpl implements MeetingService {
         return pageUtils;
     }
 
+    //在redis中通过uuid查找roomid
     @Override
     public Long searchRoomIdByUUID(String uuid) {
         if(redisTemplate.hasKey(uuid)){
@@ -130,6 +131,7 @@ public class MeetingServiceImpl implements MeetingService {
         return null;
     }
 
+    //查询参会人
     @Override
     public ArrayList<HashMap> searchOnlineMeetingMembers(HashMap param) {
         ArrayList<HashMap> list=meetingDao.searchOnlineMeetingMembers(param);

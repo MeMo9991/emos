@@ -5,6 +5,7 @@ import lombok.Data;
 import java.io.Serializable;
 import java.util.Date;
 
+//映射类，用于添加数据
 /**
  * tb_user
  * @author 

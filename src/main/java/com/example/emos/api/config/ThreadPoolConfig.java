@@ -6,7 +6,7 @@ import org.springframework.core.task.AsyncTaskExecutor;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import java.util.concurrent.ThreadPoolExecutor;
 
-//线程池配置类
+//线程池配置类，有些任务要异步执行
 
 @Configuration
 public class ThreadPoolConfig {

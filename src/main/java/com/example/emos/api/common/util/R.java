@@ -5,11 +5,12 @@ import org.apache.http.HttpStatus;
 import java.util.HashMap;
 import java.util.Map;
 
-//后端返回给前端数据的封装类
+//后端返回给前端数据的封装类，再封装成json
 
 public class R extends HashMap<String, Object> {
 
     public R() {
+        //r对象封装的默认状态码200
         put("code", HttpStatus.SC_OK);
         put("msg", "success");
     }
@@ -19,6 +20,7 @@ public class R extends HashMap<String, Object> {
         return this;
     }
 
+    //ok构造R对象
     public static R ok() {
         return new R();
     }

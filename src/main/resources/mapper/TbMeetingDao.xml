@@ -142,6 +142,7 @@
             AND JSON_CONTAINS(members, CAST(#{userId} AS CHAR))
         </if>
     </select>
+    <!--查询某个视频会议的参会人-->
     <select id="searchOnlineMeetingMembers" parameterType="HashMap" resultType="HashMap">
         SELECT u.id,
                u.name,

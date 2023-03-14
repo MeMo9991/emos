@@ -4,6 +4,7 @@ import lombok.Data;
 import java.io.Serializable;
 import java.util.List;
 
+//保存查询出的分页数据
 @Data
 public class PageUtils implements Serializable {
     private static final long serialVersionUID = 1L;

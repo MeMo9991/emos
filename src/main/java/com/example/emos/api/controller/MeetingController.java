@@ -159,15 +159,20 @@ public class MeetingController {
         return R.ok().put("page", pageUtils);
     }
 
+    //给前端返回TRTC 的 AppID，用户 UserId，还有用户签名来创建 TrtcClient 对象
     @GetMapping("/searchMyUserSig")
     @Operation(summary = "获取用户签名")
     @SaCheckLogin
     public R searchMyUserSig(){
+        //取出userid
         int userId=StpUtil.getLoginIdAsInt();
+        //生成用户签名
         String userSig=trtcUtil.genUserSig(userId+"");
+        //用户签名、userid返回前端
         return R.ok().put("userSig",userSig).put("userId",userId).put("appId",appId);
     }
 
+    //前端传uuid到form中，在redis中通过uuid查找roomid
     @PostMapping("/searchRoomIdByUUID")
     @Operation(summary = "查询视频会议室RoomId")
     @SaCheckLogin
@@ -176,11 +181,14 @@ public class MeetingController {
         return R.ok().put("roomId",roomId);
     }
 
+    //根据前端传回的meetingid查询某个视频会议参会人
     @PostMapping("/searchOnlineMeetingMembers")
     @Operation(summary = "查询线下会议成员")
     @SaCheckLogin
     public R searchOnlineMeetingMembers(@Valid @RequestBody SearchOnlineMeetingMembersForm form){
+        //form转换为hashmap
         HashMap param=JSONUtil.parse(form).toBean(HashMap.class);
+        //再传入userid
         param.put("userId",StpUtil.getLoginIdAsInt());
         ArrayList<HashMap> list=meetingService.searchOnlineMeetingMembers(param);
         return R.ok().put("list",list);

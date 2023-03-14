@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.emos.api.db.dao.TbUserDao">
+    <!--查询用户权限-->
     <select id="searchUserPermissions" parameterType="int" resultType="String">
         SELECT DISTINCT p.permission_name
         FROM tb_user u
@@ -55,6 +56,7 @@
         FROM tb_user
         WHERE status = 1
     </select>
+    <!--登录-->
     <select id="login" parameterType="HashMap" resultType="Integer">
         SELECT id
         FROM tb_user
@@ -62,6 +64,7 @@
         AND password=HEX(AES_ENCRYPT(#{password},#{username}))
         LIMIT 1;
     </select>
+    <!--查询分页数据-->
     <select id="searchUserByPage" parameterType="HashMap" resultType="HashMap">
         SELECT DISTINCT u.id,
                u.name,
@@ -98,6 +101,7 @@
         </if>
         LIMIT #{start}, #{length}
     </select>
+    <!--查询符合条件的分页记录总数-->
     <select id="searchUserCount" parameterType="HashMap" resultType="long">
         SELECT COUNT(*)
         FROM tb_user u
@@ -136,6 +140,7 @@
         FROM tb_user u LEFT JOIN tb_dept d ON u.dept_id=d.id
         WHERE u.id = #{userId} AND u.status = 1
     </select>
+    <!--添加用户-->
     <insert id="insert" parameterType="com.example.emos.api.db.pojo.TbUser">
         INSERT INTO tb_user
         SET
@@ -179,11 +184,13 @@
         status = #{status},
         create_time = #{createTime}
     </insert>
+    <!--修改密码，传入password和userID封装到hashmap中-->
     <update id="updatePassword" parameterType="HashMap">
         UPDATE tb_user
         SET password=HEX(AES_ENCRYPT(#{password},username))
         WHERE id=#{userId}
     </update>
+    <!--修改用户信息-->
     <update id="update" parameterType="HashMap">
         UPDATE tb_user
         SET
@@ -221,6 +228,7 @@
         id=id
         WHERE id=#{userId}
     </update>
+    <!--删除用户信息-->
     <delete id="deleteUserByIds">
         DELETE FROM tb_user
         WHERE id IN

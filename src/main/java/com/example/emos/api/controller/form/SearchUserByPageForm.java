@@ -11,6 +11,7 @@ import javax.validation.constraints.Pattern;
 @Data
 @Schema(description = "查询用户分页记录表单")
 public class SearchUserByPageForm {
+    //查询第几页
     @NotNull(message = "page不能为空")
     @Min(value = 1, message = "page不能小于1")
     @Schema(description = "页数")
