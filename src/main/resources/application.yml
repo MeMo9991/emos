@@ -101,9 +101,5 @@ wx:
   mch-id: 微信支付商户号
   key: 微信支付密钥
   cert-path: 微信支付数字证书文件路径
-emos:
-  code: 慕课网授权码
-  tcode: "课程授权码"
-  recieveNotify: http://你电脑的IP地址:8090/emos-api/meeting/recieveNotify
 workflow:
   url: http://你电脑的IP地址:9090/emos-workflow
